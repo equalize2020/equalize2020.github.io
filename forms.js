@@ -300,7 +300,7 @@ function save_incident_form() {
     ) {
       display_slide(1);
       document.getElementById("form_final_msg").innerHTML =
-        "Your report was not saved to our database";
+        "Your report was not saved to our database<br/><a href='incidents.html' class='go_to_other'> Click here to see all the Incidents Reports</a>";
     }
   }
 }
