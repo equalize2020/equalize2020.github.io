@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      href="https://live.staticflickr.com/65535/50152077896_fbf72d975f_o.png"
+    />
+
+    <title>Home</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- scripts -->
+    <script src="/script.js" defer></script>
+    <script src="/page_transitions.js" defer></script>
+  </head>
+  <style></style>
+  <body>
+    <!-- do the thing with the image scrolling -->
+    <div class="header">
+      <div class="inner_header">
+        <a href="index.html" class="header_img"
+          ><img
+            src="https://live.staticflickr.com/65535/50142685812_4b909c1871_o.png"
+        /></a>
+        <a href="submit.html" class="header_link">Submit</a>
+        <a href="incidents.html" class="header_link">Incidents</a>
+        <a href="statistics.html" class="header_link">Statistics</a>
+        <a href="donate.html" class="donate_btn">Donate</a>
+        <div class="header_spacer"></div>
+        <a href="about.html" class="header_link">About</a>
+        <a href="connect.html" class="header_link">Connect</a>
+      </div>
+      <div class="menu_header">
+        <a href="index.html" class="header_img"
+          ><img
+            src="https://live.staticflickr.com/65535/50142685812_4b909c1871_o.png"
+        /></a>
+        <img
+          onclick="show_function()"
+          class="hamburger"
+          src="https://live.staticflickr.com/65535/50167835143_4d3b56d21c_o.png"
+        />
+      </div>
+    </div>
+    <div class="menu_dropdown" id="menu_dropdown">
+      <a href="index.html">
+        <h1>
+          Home
+        </h1>
+      </a>
+      <a href="submit.html">
+        <h1>
+          Submit
+        </h1>
+      </a>
+      <a href="incidents.html">
+        <h1>
+          Incidents
+        </h1>
+      </a>
+      <a href="statistics.html">
+        <h1>
+          Statistics
+        </h1>
+      </a>
+      <a href="about.html">
+        <h1>
+          About
+        </h1>
+      </a>
+      <a href="connect.html">
+        <h1>
+          Connect
+        </h1>
+      </a>
+      <a href="donate.html">
+        <h1>
+          Donate
+        </h1>
+      </a>
+
+      <div class="mob0"></div>
+    </div>
+    <div class="content">
+      <img
+        src="https://live.staticflickr.com/65535/50153188011_008f22924b_o.jpg"
+        class="landing_img"
+      />
+      <img
+        src="https://live.staticflickr.com/65535/50167933958_710ef18736_b.jpg"
+        class="mobile_landing_img"
+      />
+      <div class="home_txt yellow">
+        <h1>
+          Black Lives Matter
+        </h1>
+        <p><b>
+          We support Black communities and will continue to speak out against systemic
+          oppression as we highlight racial wage gaps and workplace
+          discrimination. We need to work together and amplify marginalized
+          voices in our communities as we take actionable steps towards a better, more just
+          society.</b>
+        </p>
+      </div>
+      <div class="home_txt transparent">
+        <h1>
+          <span><i>(definition)</i></span> <b>Wage Gap</b> : The
+          <b>difference</b> in average <b>salaries</b> between groups of people.
+          Those belonging to <b>minority groups</b> tend to receive lower pay.
+        </h1>
+      </div>
+      <div class="home_txt white">
+        <h1>
+          The wage gap is a result of prolonged discrimination and inequality.
+        </h1>
+        <p>
+          Help spread information by checking out and sharing our
+          <a href="/statistics.html">Statistics</a> page, where you can compare
+          salaries across groups of people. If you would like to anonymously contribute to
+          the database, fill out a <a href="/submit_wage.html">Wage Report</a>.
+        </p>
+        <div class="home_btn_container">
+          <div onclick="window.location='/submit_wage.html'">
+            <h3>
+              Submit a Wage Report
+            </h3>
+            <img
+              src="https://live.staticflickr.com/65535/50142406526_61df9590d4_o.png"
+            />
+          </div>
+          <div onclick="window.location='/statistics.html'">
+            <h3>
+              View Statistics
+            </h3>
+            <img
+              src="https://live.staticflickr.com/65535/50153866971_4ba58b6bd2_o.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="home_txt transparent">
+        <h1>
+          <span><i>(definition)</i></span> <b>Workplace Discrimination</b>: A
+          form of <b>discrimination</b> in a <b>place of employment</b> based on
+          factors such as
+          <b>race, gender, orientation, identity, disability, religion, etc</b>.
+        </h1>
+      </div>
+      <div class="home_txt white">
+        <h1>
+          Workplace discrimination can affect a person's chances of getting
+          recruited & promoted and results in inequity in the workplace.
+        </h1>
+        <p>
+          Read other's experiences with workplace discrimination on the
+          <a href="/incidents.html">Incidents</a> page. And if you have your own
+          account to share, feel free to fill out an
+          <a href="/submit_incident.html">Incident Report</a>.
+        </p>
+        <div class="home_btn_container">
+          <div onclick="window.location='/submit_incident.html'">
+            <h3>
+              Submit an Incident Report
+            </h3>
+            <img
+              src="https://live.staticflickr.com/65535/50142534097_bb357480c3_o.png"
+            />
+          </div>
+          <div onclick="window.location='/incidents.html'">
+            <h3>
+              View Incidents
+            </h3>
+            <img
+              src="https://live.staticflickr.com/65535/50154144932_86b5d37ff7_o.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="home_txt yellow">
+        <h1>
+          Donate and Help Out
+        </h1>
+        <p>
+          Click the button below to visit other websites and sources where you
+          can read articles, watch videos, and donate to important causes and
+          movements such as Black Lives Matter.
+        </p>
+        <div class="help_btn mob">
+          Help Out
+        </div>
+      </div>
+    </div>
+    <div data-loading>
+      <span> <span></span> </span>
+      <span> <span></span> </span>
+    </div>
+    <div class="fadeout_container" id="fadeout_container">
+      <div class="fadeout"></div>
+    </div>
+  </body>
+</html>
