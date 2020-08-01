@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="https://live.staticflickr.com/65535/50152077896_fbf72d975f_o.png">
+
+    <title>Submit a Wage Report</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- scripts -->
+    <script src="/forms.js" defer></script>
+    <script src="/page_transitions.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js"></script>
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="inner_header">
+        <a href="index.html" class="header_img"
+          ><img
+            src="https://live.staticflickr.com/65535/50142685812_4b909c1871_o.png"
+        /></a>
+        <a href="submit.html" class="header_link header_page">Submit</a>
+        <a href="incidents.html" class="header_link">Incidents</a>
+        <a href="statistics.html" class="header_link">Statistics</a>
+        <a href="donate.html" class="donate_btn">Donate</a>
+        <div class="header_spacer"></div>
+        <a href="about.html" class="header_link">About</a>
+        <a href="connect.html" class="header_link">Connect</a>
+      </div>
+      <div class="menu_header">
+        <a href="index.html" class="header_img"
+          ><img
+            src="https://live.staticflickr.com/65535/50142685812_4b909c1871_o.png"
+        /></a>
+        <img
+          onclick="show_function()"
+          class="hamburger"
+          src="https://live.staticflickr.com/65535/50167835143_4d3b56d21c_o.png"
+        />
+      </div>
+    </div>
+    <div class="menu_dropdown" id="menu_dropdown">
+      <a href="index.html">
+        <h1>
+          Home
+        </h1>
+      </a>
+      <a href="submit.html">
+        <h1>
+          Submit
+        </h1>
+      </a>
+      <a href="incidents.html">
+        <h1>
+          Incidents
+        </h1>
+      </a>
+      <a href="statistics.html">
+        <h1>
+          Statistics
+        </h1>
+      </a>
+      <a href="about.html">
+        <h1>
+          About
+        </h1>
+      </a>
+      <a href="connect.html">
+        <h1>
+          Connect
+        </h1>
+      </a>
+      <a href="donate.html">
+        <h1>
+          Donate
+        </h1>
+      </a>
+
+      <div class="mob0"></div>
+    </div>
+    
+    <div class="content">
+      <a name="anchor"></a>
+      <div class="main_submit">
+        <div class="incident_form_container">
+          <h1 class="wage_title">
+            Add Your Wage Report
+          </h1>
+          <form id="incident_form" action="">
+            <div class="wage_sub">
+              <h2>
+                Step 1: Employment Information
+              </h2>
+            </div>
+            <div class="wage_inputs">
+              <div class="wage_group wage_half">
+                <h3 id="salary_label">
+                  * Base Full-Time Annual Salary (CAD)
+                </h3>
+                <input
+                  type="number"
+                  id="salary"
+                  name="salary"
+                  min="0"
+                  placeholder=" $"
+                />
+              </div>
+              <div class="wage_group wage_half">
+                <h3>
+                  Bonus (CAD)
+                </h3>
+                <input
+                  type="number"
+                  id="bonus"
+                  name="bonus"
+                  min="0"
+                  placeholder=" $"
+                />
+              </div>
+              <div class="wage_group wage_full">
+                <h3>
+                  Employer/Company
+                </h3>
+                <input type="text" id="company" name="company" />
+              </div>
+              <div class="wage_group wage_full">
+                <h3>
+                  Field
+                </h3>
+                <select id="field_w" name="field_w">
+                  <option value=""></option>
+                  <option value="Arts">Arts</option>
+                  <option value="Business">Business</option>
+                  <option value="Education">Education</option>
+                  <option value="Engineering">Engineering</option>
+                  <option value="Finance">Finance</option>
+                  <option value="Government">Government</option>
+                  <option value="Healthcare">Healthcare</option>
+                  <option value="Legal Services">Legal Services</option>
+                  <option value="Manufacturing">Manufacturing</option>
+                  <option value="Real Estate">Real Estate</option>
+                  <option value="Retail">Retail</option>
+                  <option value="Technology">Technology</option>
+                  <option value="Other">Other</option>
+                </select>
+
+              </div>
+              <div class="wage_group wage_full">
+                <h3>
+                  Location
+                </h3>
+                <input type="text" id="location_w" name="location_w" />
+              </div>
+              <div class="wage_group wage_half">
+                <h3>
+                  Years at Company
+                </h3>
+                <input
+                  type="number"
+                  id="yrs_company"
+                  name="yrs_company"
+                  min="0"
+                  step="0.5"
+                  placeholder=""
+                />
+              </div>
+              <div class="wage_group wage_half">
+                <h3>
+                  Years of Experience
+                </h3>
+                <input
+                  type="number"
+                  id="yrs_exp"
+                  name="yrs_exp"
+                  min="0"
+                  step="0.5"
+                  placeholder=""
+                />
+              </div>
+              <div class="wage_spacer"></div>
+            </div>
+            <div class="wage_sub">
+              <h2>
+                Step 2: About You
+              </h2>
+            </div>
+            <div class="wage_inputs_2">
+              <h3>
+                Race
+              </h3>
+              <div class="inner_form radio">
+                <div>
+                  <input type="radio" id="wr0" name="wrace" value="Asian" />
+                  <label for="wr0">Asian</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="wr1"
+                    name="wrace"
+                    value="Black"
+                  />
+                  <label for="wr1">Black/African</label><br />
+                </div>
+
+                <div>
+                  <input type="radio" id="wr2" name="wrace" value="Latinx" />
+                  <label for="wr2">Latinx</label><br />
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="wr3"
+                    name="wrace"
+                    value="Middle Eastern"
+                  />
+                  <label for="wr3">Middle Eastern</label><br />
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="wr4"
+                    name="wrace"
+                    value="Multiracial"
+                  />
+                  <label for="wr4">Multiracial</label><br />
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="wr5"
+                    name="wrace"
+                    value="Native American"
+                  />
+                  <label for="wr5">Native American</label><br />
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="wr6"
+                    name="wrace"
+                    value="South Asian"
+                  />
+                  <label for="wr6">South Asian</label><br />
+                </div>
+
+                <div>
+                  <input type="radio" id="wr7" name="wrace" value="White" />
+                  <label for="wr7">White</label><br />
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="wr8"
+                    name="wrace"
+                    value="Prefer not to say"
+                  />
+                  <label for="wr8">Prefer not to say</label><br />
+                </div>
+
+                <div class="other_div">
+                  <input type="radio" id="wr9" name="wrace" value="other" />
+                  <label for="wr9">Other: </label>
+                  <input type="text" class="other_input" id="wrace_other" />
+                </div>
+              </div>
+              <h3>
+                Gender
+              </h3>
+              <div class="inner_form radio">
+                <div>
+                  <input type="radio" id="wg0" name="wgender" value="Female" />
+                  <label for="wg0">Female</label><br />
+                </div>
+                <div>
+                  <input type="radio" id="wg1" name="wgender" value="Male" />
+                  <label for="wg1">Male</label><br />
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="wg2"
+                    name="wgender"
+                    value="Non-Binary"
+                  />
+                  <label for="wg2">Non-binary</label><br />
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="wg3"
+                    name="wgender"
+                    value="Prefer not to say"
+                  />
+                  <label for="wg3">Prefer not to say</label><br />
+                </div>
+                <div>
+                  <input type="radio" id="wg4" name="wgender" value="other" />
+                  <label for="wg4">Other: </label>
+                  <input type="text" class="other_input" id="wgender_other" />
+                </div>
+                <div></div>
+
+                <input
+                  type="checkbox"
+                  id="wtrans"
+                  name="wtrans"
+                  class="form_checkbox"
+                />
+                <label for="wtrans" class="form_checkbox_label">
+                  Check if you identify as trans</label
+                >
+              </div>
+              <h3>
+                Ability
+              </h3>
+              <div class="inner_form radio">
+                <input
+                  type="checkbox"
+                  id="wdisability"
+                  name="wdisability"
+                  class="form_checkbox"
+                />
+                <label for="wdisability" class="form_checkbox_label">
+                  Check if you identify as a person with a disability</label
+                ><br />
+              </div>
+              <h3>
+                Age
+              </h3>
+              <div class="wage_group wage_full2">
+                <input type="number" id="w_age" name="w_age" class="age_in"/>
+              </div>
+              <div class="wage_spacer"></div>
+            </div>
+            <div class="wage_sub">
+              <h2>
+                Step 3: Submitting your Report
+              </h2>
+            </div>
+            <div class="wage_inputs_2 mob0">
+              <h3>
+                Additional details
+              </h3>
+              <div class="inner_form">
+                <textarea
+                  type="text"
+                  id="wage_additional"
+                  name="wage_additional"
+                  class="description_input"
+                ></textarea
+                ><br />
+              </div>
+              <h3>
+                Check the box below to give your consent to adding your wage
+                report to our database
+              </h3>
+              <div class="inner_form radio">
+                <input
+                  type="checkbox"
+                  id="wage_consent"
+                  name="wage_consent"
+                  class="form_checkbox"
+                />
+                <label for="wage_consent" class="form_checkbox_label">
+                  I consent to sharing my wage report</label
+                ><br />
+              </div>
+
+              <div class="align_submit">
+                <div id="wage_submit_button" onclick="save_wage_form();">
+                  Submit Report
+                </div>
+                <h3 id="wage_finished_text">
+                </h3>
+              </div>
+
+              <div class="wage_spacer"></div>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </body>
+</html>
