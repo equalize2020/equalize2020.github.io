@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="https://live.staticflickr.com/65535/50152077896_fbf72d975f_o.png">
+
+    <title>Incidents</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js"></script>
+       <script src="/forms.js"></script>
+    <!--<script src="/script.js" defer></script>-->
+    <script src="/page_transitions.js" defer></script>
+  </head>
+  <body onload="show_report_grid(6, -1);">
+    <div class="header">
+      <div class="inner_header">
+        <a href="index.html" class="header_img"
+          ><img
+            src="https://live.staticflickr.com/65535/50142685812_4b909c1871_o.png"
+        /></a>
+        <a href="submit.html" class="header_link">Submit</a>
+        <a href="incidents.html" class="header_link header_page">Incidents</a>
+        <a href="statistics.html" class="header_link">Statistics</a>
+        <a href="donate.html" class="donate_btn">Donate</a>
+        <div class="header_spacer"></div>
+        <a href="about.html" class="header_link">About</a>
+        <a href="connect.html" class="header_link">Connect</a>
+      </div>
+      <div class="menu_header">
+        <a href="index.html" class="header_img"
+          ><img
+            src="https://live.staticflickr.com/65535/50142685812_4b909c1871_o.png"
+        /></a>
+        <img
+          onclick="show_function()"
+          class="hamburger"
+          src="https://live.staticflickr.com/65535/50167835143_4d3b56d21c_o.png"
+        />
+      </div>
+    </div>
+    <div class="menu_dropdown" id="menu_dropdown">
+      <a href="index.html">
+        <h1>
+          Home
+        </h1>
+      </a>
+      <a href="submit.html">
+        <h1>
+          Submit
+        </h1>
+      </a>
+      <a href="incidents.html">
+        <h1>
+          Incidents
+        </h1>
+      </a>
+      <a href="statistics.html">
+        <h1>
+          Statistics
+        </h1>
+      </a>
+      <a href="about.html">
+        <h1>
+          About
+        </h1>
+      </a>
+      <a href="connect.html">
+        <h1>
+          Connect
+        </h1>
+      </a>
+      <a href="donate.html">
+        <h1>
+          Donate
+        </h1>
+      </a>
+
+      <div class="mob0"></div>
+    </div>
+    <div class="content">
+      <div class="incidents_top">
+        <h1 class="top_title">
+          View Incidents
+        </h1>
+        <div class="top_search">
+          <div class="inner_form search_form">
+            <input
+              type="text"
+              id="incident_search"
+              placeholder="Search through our database"
+            />
+            <div id="search_button" onclick="search_incidents();">
+              Search
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="incidents_container" id="in_container">
+      </div>
+      <div class="see_more_div" onclick="show_report_grid(6, -1)">
+        See More Reports
+      </div>
+    </div>
+
+        <div data-loading>
+      <span> <span></span> </span>
+      <span> <span></span> </span>
+    </div>
+    <div class="fadeout_container" id="fadeout_container">
+        <div class="fadeout"></div>
+    </div>
+  </body>
+</html>
