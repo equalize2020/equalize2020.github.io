@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      href="https://live.staticflickr.com/65535/50152077896_fbf72d975f_o.png"
+    />
+
+    <title>Statistics</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js"></script>
+    <script src="/script.js" defer></script>
+    <script src="/page_transitions.js" defer></script>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script src="/statistics.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  </head>
+
+  <body onload="fadeOutEffect();">
+    <div class="header">
+      <div class="inner_header">
+        <a href="index.html" class="header_img"
+          ><img
+            src="https://live.staticflickr.com/65535/50142685812_4b909c1871_o.png"
+        /></a>
+        <a href="submit.html" class="header_link">Submit</a>
+        <a href="incidents.html" class="header_link">Incidents</a>
+        <a href="statistics.html" class="header_link header_page">Statistics</a>
+        <a href="donate.html" class="donate_btn">Donate</a>
+        <div class="header_spacer"></div>
+        <a href="about.html" class="header_link">About</a>
+        <a href="connect.html" class="header_link">Connect</a>
+      </div>
+      <div class="menu_header">
+        <a href="index.html" class="header_img"
+          ><img
+            src="https://live.staticflickr.com/65535/50142685812_4b909c1871_o.png"
+        /></a>
+        <img
+          onclick="show_function()"
+          class="hamburger"
+          src="https://live.staticflickr.com/65535/50167835143_4d3b56d21c_o.png"
+        />
+      </div>
+    </div>
+    <div class="menu_dropdown" id="menu_dropdown">
+      <a href="index.html">
+        <h1>
+          Home
+        </h1>
+      </a>
+      <a href="submit.html">
+        <h1>
+          Submit
+        </h1>
+      </a>
+      <a href="incidents.html">
+        <h1>
+          Incidents
+        </h1>
+      </a>
+      <a href="statistics.html">
+        <h1>
+          Statistics
+        </h1>
+      </a>
+      <a href="about.html">
+        <h1>
+          About
+        </h1>
+      </a>
+      <a href="connect.html">
+        <h1>
+          Connect
+        </h1>
+      </a>
+      <a href="donate.html">
+        <h1>
+          Donate
+        </h1>
+      </a>
+
+      <div class="mob0"></div>
+    </div>
+    <div class="content">
+      <div class="home_txt white2">
+        <h1>
+          Statistics
+        </h1>
+        <p>
+          Based on the data we gather from our community members, below is the
+          list of graphs illustrating the diversity and wage gaps in society and
+          specific job sectors. We analyze race, gender, age, and job sectors to
+          illustrate their intersectionality. <b>Pay equity</b> is often overlooked
+          when analyzing racism. Many studies show how minorities receive less
+          than their equally qualified colleagues.
+          <a
+            href="https://www.cnbc.com/2020/06/11/george-floyd-protests-add-pressure-for-closing-the-racial-wage-gap.html"
+            >Precisely, the average hourly wage for African Americans is $36.23
+            and $44.36 for that of white people.</a
+          >
+          By shining light on these statistics, our aim is to address workplace
+          discimination and demand equal pay where it is due.
+        </p>
+      </div>
+      <div class="home_txt yellow">
+        <h1>
+          The Effects of Race and Gender on Wage
+        </h1>
+        <p>
+          In the chart below, you can see the average wages of different people
+          based on their <b>race and gender</b>. It is important to acknowledge that
+          many factors such as race and gender are interconnected and can all
+          influence how one is compensated.
+        </p>
+        <h2>
+          Race and Gender
+        </h2>
+        <div id="chartContainer" class="chart_cont"></div>
+        <p>
+          To see data for specific groups, click the corresponding colour in the
+          legends of the graphs.
+        </p>
+      </div>
+      <div class="home_txt transparent">
+        <h1>
+          <span><i>(definition)</i></span> <b>Intersectionality</b>: A
+          theoretical framework that outlines the
+          <b>interconnected nature</b> of a person's
+          <b>race, gender, and class</b> identities and how they overlap to
+          create different types of <b>discrimination and privilege</b>.
+        </h1>
+      </div>
+      <div class="home_txt yellow">
+        <h1>
+          The Effects of Age on Wage in Relation to Race and Gender
+        </h1>
+        <p>
+          The following graphs show the wage gap for people of different races
+          and genders as they progress in life and their careers.
+        </p>
+        <h2>
+          Race and Age
+        </h2>
+        <div id="chartContainer2" class="chart_cont"></div>
+        <p>
+          <br />
+          Generally, minority groups  face more discrimination in the work
+          system and end up having a harder time getting <b>access to promotions and
+          higher level opportunities</b>.
+          <br /><br />
+        </p>
+        <h2>
+          Gender and Age
+        </h2>
+        <div id="chartContainer3" class="chart_cont"></div>
+      </div>
+
+      <!--       <div class="home_txt yellow">
+        <h1>
+          The Effect of Gender and Age on Wage
+        </h1>
+        <p>
+          This graph illustrates how the wage gap evolves as people of different genders
+          get older.
+        </p>
+        <h2>
+          Gender and Age
+        </h2>
+        <div id="chartContainer3" class="chart_cont"></div>
+      </div> -->
+
+      <script type="text/javascript">
+        //var stats_data = JSON.parse(localStorage.getItem("stats_data"));
+        // window.onload = function() { // change the onload
+        function show_charts_after() {
+          var stats_data = JSON.parse(localStorage.getItem("stats_data"));
+          var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            title: {
+              text: ""
+            },
+            backgroundColor: "#10393f",
+            dataPointWidth: 12,
+            axisY: {
+              title: "Salary",
+              labelFontColor: "#ffffff",
+              titleFontColor: "#ffffff",
+              labelAngle: 0,
+              fontFamily: "Avenir",
+              labelFontSize: 15,
+              titleFontSize: 20
+            },
+            axisX: {
+              labelFontColor: "#ffffff",
+              fontFamily: "Avenir",
+              reversed: true
+            },
+            legend: {
+              cursor: "pointer",
+              itemclick: toggleDataSeries,
+              fontColor: "#ffffff"
+            },
+            toolTip: {
+              shared: false,
+              content: toolTipFormatter,
+              backgroundColor: "#ffffff",
+              animationEnabled: true,
+              borderThickness: 3,
+              cornerRadius: 5
+            },
+            data: [
+              {
+                type: "bar",
+                showInLegend: true,
+                name: "Other",
+                color: "#d5d811",
+                dataPoints: [
+                  { y: parseInt(stats_data["asian_gother"]), label: "Asian" },
+                  { y: parseInt(stats_data["black_gother"]), label: "Black" },
+                  { y: parseInt(stats_data["latinx_gother"]), label: "Latinx" },
+                  {
+                    y: parseInt(stats_data["middleeastern_gother"]),
+                    label: "Middle Eastern"
+                  },
+                  {
+                    y: parseInt(stats_data["multiracial_gother"]),
+                    label: "Multiracial"
+                  },
+                  {
+                    y: parseInt(stats_data["nativeamerican_gother"]),
+                    label: "Native American"
+                  },
+                  {
+                    y: parseInt(stats_data["southasian_gother"]),
+                    label: "South Asian"
+                  },
+                  { y: parseInt(stats_data["white_gother"]), label: "White" },
+                  { y: parseInt(stats_data["rother_gother"]), label: "Other" }
+                ]
+              },
+
+              {
+                type: "bar",
+                showInLegend: true,
+                name: "Female",
+                color: "#2B99A8",
+                dataPoints: [
+                  { y: parseInt(stats_data["asian_female"]), label: "Asian" },
+                  { y: parseInt(stats_data["black_female"]), label: "Black" },
+                  { y: parseInt(stats_data["latinx_female"]), label: "Latinx" },
+                  {
+                    y: parseInt(stats_data["middleeastern_female"]),
+                    label: "Middle Eastern"
+                  },
+                  {
+                    y: parseInt(stats_data["multiracial_female"]),
+                    label: "Multiracial"
+                  },
+                  {
+                    y: parseInt(stats_data["nativeamerican_female"]),
+                    label: "Native American"
+                  },
+                  {
+                    y: parseInt(stats_data["southasian_female"]),
+                    label: "South Asian"
+                  },
+                  { y: parseInt(stats_data["white_female"]), label: "White" },
+                  { y: parseInt(stats_data["rother_female"]), label: "Other" }
+                ]
+              },
+              {
+                type: "bar",
+                showInLegend: true,
+                name: "Male",
+                color: "#0081cf",
+                dataPoints: [
+                  { y: parseInt(stats_data["asian_male"]), label: "Asian" },
+                  { y: parseInt(stats_data["black_male"]), label: "Black" },
+                  { y: parseInt(stats_data["latinx_male"]), label: "Latinx" },
+                  {
+                    y: parseInt(stats_data["middleeastern_male"]),
+                    label: "Middle Eastern"
+                  },
+                  {
+                    y: parseInt(stats_data["multiracial_male"]),
+                    label: "Multiracial"
+                  },
+                  {
+                    y: parseInt(stats_data["nativeamerican_male"]),
+                    label: "Native American"
+                  },
+                  {
+                    y: parseInt(stats_data["southasian_male"]),
+                    label: "South Asian"
+                  },
+                  { y: parseInt(stats_data["white_male"]), label: "White" },
+                  { y: parseInt(stats_data["rother_male"]), label: "Other" }
+                ]
+              }
+            ]
+          });
+          chart.render();
+
+          function toolTipFormatter(e) {
+            var str = "";
+            var total = 0;
+            var tot_count = 0;
+            var tot_avg;
+            var str3;
+            var str2;
+            for (var i = 0; i < e.entries.length; i++) {
+              var str1 =
+                '<span style= "color:' +
+                e.entries[i].dataSeries.color +
+                '">' +
+                e.entries[i].dataSeries.name +
+                "</span>: " +
+                e.entries[i].dataPoint.y +
+                " <br/>";
+              total = e.entries[i].dataPoint.y + total;
+              tot_count += 1;
+              str = str.concat(str1);
+            }
+            tot_avg = Math.round(total / tot_count);
+            str2 =
+              "<strong>" + e.entries[0].dataPoint.label + "</strong> <br/>";
+            return str2.concat(str);
+          }
+
+          function toggleDataSeries(e) {
+            if (
+              typeof e.dataSeries.visible === "undefined" ||
+              e.dataSeries.visible
+            ) {
+              e.dataSeries.visible = false;
+            } else {
+              e.dataSeries.visible = true;
+            }
+            chart.render();
+          }
+
+          var chart2_colors = [
+            "#0d894d",
+            "#4d97a6",
+            "#d6d749",
+            "#2615a8",
+            "#a4dde9",
+            "#3480c9",
+            "#faf843",
+            "#4da67b",
+            "#052f7c"
+          ];
+
+          var chart2 = new CanvasJS.Chart("chartContainer2", {
+            animationEnabled: true,
+            title: {
+              text: ""
+            },
+            backgroundColor: "#10393f",
+            dataPointWidth: 6,
+            axisY: {
+              title: "Salary",
+              labelFontColor: "#ffffff",
+              titleFontColor: "#ffffff",
+              labelAngle: 0,
+              fontFamily: "Avenir",
+              labelFontSize: 15,
+              titleFontSize: 20
+            },
+            axisX: {
+              labelFontColor: "#ffffff",
+              fontFamily: "Avenir",
+              reversed: true
+            },
+            legend: {
+              cursor: "pointer",
+              itemclick: toggleDataSeries2,
+              fontColor: "#ffffff"
+            },
+            toolTip: {
+              shared: false,
+              content: toolTipFormatter2,
+              backgroundColor: "#ffffff",
+              animationEnabled: true,
+              borderThickness: 3,
+              cornerRadius: 5
+            },
+            data: [
+              {
+                type: "bar",
+                showInLegend: true,
+                name: "16-24",
+                color: chart2_colors[0],
+                dataPoints: [
+                  { y: parseInt(stats_data["asian_range1"]), label: "Asian" },
+                  { y: parseInt(stats_data["black_range1"]), label: "Black" },
+                  { y: parseInt(stats_data["latinx_range1"]), label: "Latinx" },
+                  {
+                    y: parseInt(stats_data["middleeastern_range1"]),
+                    label: "Middle Eastern"
+                  },
+                  {
+                    y: parseInt(stats_data["multiracial_range1"]),
+                    label: "Multiracial"
+                  },
+                  {
+                    y: parseInt(stats_data["nativeamerican_range1"]),
+                    label: "Native American"
+                  },
+                  {
+                    y: parseInt(stats_data["southasian_range1"]),
+                    label: "South Asian"
+                  },
+                  { y: parseInt(stats_data["white_range1"]), label: "White" },
+                  { y: parseInt(stats_data["rother_range1"]), label: "Other" }
+                ]
+              },
+              {
+                type: "bar",
+                showInLegend: true,
+                name: "25-34",
+                color: chart2_colors[1],
+                dataPoints: [
+                  { y: parseInt(stats_data["asian_range2"]), label: "Asian" },
+                  { y: parseInt(stats_data["black_range2"]), label: "Black" },
+                  { y: parseInt(stats_data["latinx_range2"]), label: "Latinx" },
+                  {
+                    y: parseInt(stats_data["middleeastern_range2"]),
+                    label: "Middle Eastern"
+                  },
+                  {
+                    y: parseInt(stats_data["multiracial_range2"]),
+                    label: "Multiracial"
+                  },
+                  {
+                    y: parseInt(stats_data["nativeamerican_range2"]),
+                    label: "Native American"
+                  },
+                  {
+                    y: parseInt(stats_data["southasian_range2"]),
+                    label: "South Asian"
+                  },
+                  { y: parseInt(stats_data["white_range2"]), label: "White" },
+                  { y: parseInt(stats_data["rother_range2"]), label: "Other" }
+                ]
+              },
+              {
+                type: "bar",
+                showInLegend: true,
+                name: "35-44",
+                color: chart2_colors[2],
+                dataPoints: [
+                  { y: parseInt(stats_data["asian_range3"]), label: "Asian" },
+                  { y: parseInt(stats_data["black_range3"]), label: "Black" },
+                  { y: parseInt(stats_data["latinx_range3"]), label: "Latinx" },
+                  {
+                    y: parseInt(stats_data["middleeastern_range3"]),
+                    label: "Middle Eastern"
+                  },
+                  {
+                    y: parseInt(stats_data["multiracial_range3"]),
+                    label: "Multiracial"
+                  },
+                  {
+                    y: parseInt(stats_data["nativeamerican_range3"]),
+                    label: "Native American"
+                  },
+                  {
+                    y: parseInt(stats_data["southasian_range3"]),
+                    label: "South Asian"
+                  },
+                  { y: parseInt(stats_data["white_range3"]), label: "White" },
+                  { y: parseInt(stats_data["rother_range3"]), label: "Other" }
+                ]
+              },
+              {
+                type: "bar",
+                showInLegend: true,
+                name: "45-54",
+                color: chart2_colors[3],
+                dataPoints: [
+                  { y: parseInt(stats_data["asian_range4"]), label: "Asian" },
+                  { y: parseInt(stats_data["black_range4"]), label: "Black" },
+                  { y: parseInt(stats_data["latinx_range4"]), label: "Latinx" },
+                  {
+                    y: parseInt(stats_data["middleeastern_range4"]),
+                    label: "Middle Eastern"
+                  },
+                  {
+                    y: parseInt(stats_data["multiracial_range4"]),
+                    label: "Multiracial"
+                  },
+                  {
+                    y: parseInt(stats_data["nativeamerican_range4"]),
+                    label: "Native American"
+                  },
+                  {
+                    y: parseInt(stats_data["southasian_range4"]),
+                    label: "South Asian"
+                  },
+                  { y: parseInt(stats_data["white_range4"]), label: "White" },
+                  { y: parseInt(stats_data["rother_range4"]), label: "Other" }
+                ]
+              },
+              {
+                type: "bar",
+                showInLegend: true,
+                name: "55-64",
+                color: chart2_colors[4],
+                dataPoints: [
+                  { y: parseInt(stats_data["asian_range5"]), label: "Asian" },
+                  { y: parseInt(stats_data["black_range5"]), label: "Black" },
+                  { y: parseInt(stats_data["latinx_range5"]), label: "Latinx" },
+                  {
+                    y: parseInt(stats_data["middleeastern_range5"]),
+                    label: "Middle Eastern"
+                  },
+                  {
+                    y: parseInt(stats_data["multiracial_range5"]),
+                    label: "Multiracial"
+                  },
+                  {
+                    y: parseInt(stats_data["nativeamerican_range5"]),
+                    label: "Native American"
+                  },
+                  {
+                    y: parseInt(stats_data["southasian_range5"]),
+                    label: "South Asian"
+                  },
+                  { y: parseInt(stats_data["white_range5"]), label: "White" },
+                  { y: parseInt(stats_data["rother_range5"]), label: "Other" }
+                ]
+              },
+              {
+                type: "bar",
+                showInLegend: true,
+                name: "64+",
+                color: chart2_colors[5],
+                dataPoints: [
+                  { y: parseInt(stats_data["asian_range6"]), label: "Asian" },
+                  { y: parseInt(stats_data["black_range6"]), label: "Black" },
+                  { y: parseInt(stats_data["latinx_range6"]), label: "Latinx" },
+                  {
+                    y: parseInt(stats_data["middleeastern_range6"]),
+                    label: "Middle Eastern"
+                  },
+                  {
+                    y: parseInt(stats_data["multiracial_range6"]),
+                    label: "Multiracial"
+                  },
+                  {
+                    y: parseInt(stats_data["nativeamerican_range6"]),
+                    label: "Native American"
+                  },
+                  {
+                    y: parseInt(stats_data["southasian_range6"]),
+                    label: "South Asian"
+                  },
+                  { y: parseInt(stats_data["white_range6"]), label: "White" },
+                  { y: parseInt(stats_data["rother_range6"]), label: "Other" }
+                ]
+              }
+            ]
+          });
+          chart2.render();
+
+          function toolTipFormatter2(e) {
+            var str = "";
+            var total = 0;
+            var str3;
+            var str2;
+            for (var i = 0; i < e.entries.length; i++) {
+              var str1 =
+                '<span style= "color:' +
+                e.entries[i].dataSeries.color +
+                '">' +
+                e.entries[i].dataSeries.name +
+                "</span>: <strong>" +
+                e.entries[i].dataPoint.y +
+                "</strong> <br/>";
+              total = e.entries[i].dataPoint.y + total;
+              str = str.concat(str1);
+            }
+            str2 =
+              "<strong>" + e.entries[0].dataPoint.label + "</strong> <br/>";
+            str3 =
+              '<span style = "color:Green">Total: </span><strong>' +
+              total +
+              "</strong><br/>";
+            return str2.concat(str).concat(str3);
+          }
+
+          function toggleDataSeries2(e) {
+            if (
+              typeof e.dataSeries.visible === "undefined" ||
+              e.dataSeries.visible
+            ) {
+              e.dataSeries.visible = false;
+            } else {
+              e.dataSeries.visible = true;
+            }
+            chart2.render();
+          }
+
+          var chart3 = new CanvasJS.Chart("chartContainer3", {
+            animationEnabled: true,
+            title: {
+              text: ""
+            },
+            backgroundColor: "#10393f",
+            dataPointWidth: 12,
+            axisY: {
+              title: "Salary",
+              labelFontColor: "#ffffff",
+              titleFontColor: "#ffffff",
+              labelAngle: 0,
+              fontFamily: "Avenir",
+              labelFontSize: 15,
+              titleFontSize: 20
+            },
+            axisX: {
+              labelFontColor: "#ffffff",
+              fontFamily: "Avenir",
+              reversed: false
+            },
+            legend: {
+              cursor: "pointer",
+              itemclick: toggleDataSeries3,
+              fontColor: "#ffffff"
+            },
+            toolTip: {
+              shared: false,
+              content: toolTipFormatter3,
+              backgroundColor: "#ffffff",
+              animationEnabled: true,
+              borderThickness: 3,
+              cornerRadius: 5
+            },
+            data: [
+              {
+                type: "bar",
+                showInLegend: true,
+                name: "16-24",
+                color: chart2_colors[6],
+                dataPoints: [
+                  { y: parseInt(stats_data["gother_range1"]), label: "Other" },
+                  { y: parseInt(stats_data["female_range1"]), label: "Female" },
+                  { y: parseInt(stats_data["male_range1"]), label: "Male" }
+                ]
+              },
+              {
+                type: "bar",
+                showInLegend: true,
+                name: "25-34",
+                color: chart2_colors[7],
+                dataPoints: [
+                  { y: parseInt(stats_data["gother_range2"]), label: "Other" },
+                  { y: parseInt(stats_data["female_range2"]), label: "Female" },
+                  { y: parseInt(stats_data["male_range2"]), label: "Male" }
+                ]
+              },
+              {
+                type: "bar",
+                showInLegend: true,
+                name: "35-44",
+                color: chart2_colors[8],
+                dataPoints: [
+                  { y: parseInt(stats_data["gother_range3"]), label: "Other" },
+                  { y: parseInt(stats_data["female_range3"]), label: "Female" },
+                  { y: parseInt(stats_data["male_range3"]), label: "Male" }
+                ]
+              },
+              {
+                type: "bar",
+                showInLegend: true,
+                name: "45-54",
+                color: chart2_colors[0],
+                dataPoints: [
+                  { y: parseInt(stats_data["gother_range4"]), label: "Other" },
+                  { y: parseInt(stats_data["female_range4"]), label: "Female" },
+                  { y: parseInt(stats_data["male_range4"]), label: "Male" }
+                ]
+              },
+              {
+                type: "bar",
+                showInLegend: true,
+                name: "55-64",
+                color: chart2_colors[1],
+                dataPoints: [
+                  { y: parseInt(stats_data["gother_range5"]), label: "Other" },
+                  { y: parseInt(stats_data["female_range5"]), label: "Female" },
+                  { y: parseInt(stats_data["male_range5"]), label: "Male" }
+                ]
+              },
+              {
+                type: "bar",
+                showInLegend: true,
+                name: "64+",
+                color: chart2_colors[2],
+                dataPoints: [
+                  { y: parseInt(stats_data["gother_range6"]), label: "Other" },
+                  { y: parseInt(stats_data["female_range6"]), label: "Female" },
+                  { y: parseInt(stats_data["male_range6"]), label: "Male" }
+                ]
+              }
+            ]
+          });
+          chart3.render();
+
+          function toolTipFormatter3(e) {
+            var str = "";
+            var total = 0;
+            var str3;
+            var str2;
+            for (var i = 0; i < e.entries.length; i++) {
+              var str1 =
+                '<span style= "color:' +
+                e.entries[i].dataSeries.color +
+                '">' +
+                e.entries[i].dataSeries.name +
+                "</span>: <strong>" +
+                e.entries[i].dataPoint.y +
+                "</strong> <br/>";
+              total = e.entries[i].dataPoint.y + total;
+              str = str.concat(str1);
+            }
+            str2 =
+              "<strong>" + e.entries[0].dataPoint.label + "</strong> <br/>";
+            str3 =
+              '<span style = "color:Green">Total: </span><strong>' +
+              total +
+              "</strong><br/>";
+            return str2.concat(str).concat(str3);
+          }
+
+          function toggleDataSeries3(e) {
+            if (
+              typeof e.dataSeries.visible === "undefined" ||
+              e.dataSeries.visible
+            ) {
+              e.dataSeries.visible = false;
+            } else {
+              e.dataSeries.visible = true;
+            }
+            chart3.render();
+          }
+        }
+      </script>
+      <div class="home_txt white2">
+        <h1>
+          The Division of Race by Field of Work
+        </h1>
+        <p>
+          Press the buttons below to see the distribution of people who
+          contributed to equalize's database, sorted by <b>race and field of work</b>.
+        </p>
+        <div class="toggle_container">
+          <div onclick="toggleReturn(0)">
+            Technology
+          </div>
+          <div onclick="toggleReturn(1)">
+            Engineering
+          </div>
+          <div onclick="toggleReturn(2)">
+            Business
+          </div>
+          <div onclick="toggleReturn(3)">
+            Retail
+          </div>
+          <div onclick="toggleReturn(4)">
+            Healthcare
+          </div>
+          <div onclick="toggleReturn(5)">
+            Finance
+          </div>
+          <div onclick="toggleReturn(6)">
+            Real Estate
+          </div>
+          <div onclick="toggleReturn(7)">
+            Legal Services
+          </div>
+          <div onclick="toggleReturn(8)">
+            Government
+          </div>
+          <div onclick="toggleReturn(9)">
+            Manufacturing
+          </div>
+          <div onclick="toggleReturn(10)">
+            Education
+          </div>
+          <div onclick="toggleReturn(11)">
+            Arts
+          </div>
+        </div>
+        <div id="piechart" class="chart_cont2"></div>
+      </div>
+
+      <div class="ht2 yellow">
+        <h1>
+          Contribute to the equalize Database
+        </h1>
+        <p>
+          The information provided on this page comes from our database that is
+          in constant evolution. You can contribute to these numbers as well by
+          filling out a
+          <b><a href="submit_wage.html">Wage Report Form</a></b
+          >.
+        </p>
+      </div>
+
+      <div class="home_txt white2">
+        <h1>
+          The Division of Gender by Field of Work
+        </h1>
+        <p>
+          The following graph shows the distribution of people who contributed
+          to our database, sorted by their <b>gender and field of work</b>.
+        </p>
+        <figure class="highcharts-figure">
+          <div id="stacked_container2" class="chart_cont3"></div>
+        </figure>
+      </div>
+
+      <script>
+        function show_charts_after2() {
+          Highcharts.chart("stacked_container2", {
+            chart: {
+              type: "bar",
+              backgroundColor: "#ffffff",
+              textColor: "#10393f"
+            },
+
+            title: {
+              text: ""
+            },
+            xAxis: {
+              categories: [
+                "Technology",
+                "Engineering",
+                "Business",
+                "Retail",
+                "Healthcare",
+                "Finance",
+                "Real Estate",
+                "Legal Services",
+                "Government",
+                "Manufacturing",
+                "Education",
+                "Arts"
+              ]
+            },
+            colors: ["#a4dde9", "#3480c9", "#faf843"],
+            yAxis: {
+              min: 0,
+              title: {
+                text: "Total (%)"
+              }
+            },
+            legend: {
+              reversed: true
+            },
+            plotOptions: {
+              series: {
+                stacking: "percent"
+              }
+            },
+            series: [
+              {
+                name: "Other",
+                data: gender_sector("GOther")
+              },
+              {
+                name: "Male",
+                //each datapoint represents how many males are in each sector
+                data: gender_sector("Male")
+              },
+              {
+                name: "Female",
+                data: gender_sector("Female")
+              }
+            ]
+          });
+        }
+      </script>
+      <div class="home_txt yellow mob2">
+        <h1>
+          Donate and Help Out
+        </h1>
+        <p>
+          Click the button below to visit other websites and sources where you
+          can read articles, watch videos, and donate to important causes and
+          movements such as Black Lives Matter.
+        </p>
+        <div class="help_btn">
+          Help Out
+        </div>
+      </div>
+    </div>
+    <!-- https://codepen.io/tomncurry/pen/xJpOax -->
+    <div data-loading>
+      <span> <span></span> </span>
+      <span> <span></span> </span>
+    </div>
+    <div class="fadeout_container" id="fadeout_container">
+      <div class="fadeout"></div>
+    </div>
+    <!-- quotes from https://www.dosomething.org/us/facts/11-facts-about-racial-discrimination -->
+  </body>
+</html>
