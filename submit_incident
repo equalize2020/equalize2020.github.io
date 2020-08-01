@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="https://live.staticflickr.com/65535/50152077896_fbf72d975f_o.png">
+
+    <title>Submit an Incident Report</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- scripts -->
+    <script src="/forms.js" defer></script>
+    <script src="/page_transitions.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js"></script>
+  </head>
+  <body onload="display_slide(0);">
+    <div class="header">
+      <div class="inner_header">
+        <a href="index.html" class="header_img"
+          ><img
+            src="https://live.staticflickr.com/65535/50142685812_4b909c1871_o.png"
+        /></a>
+        <a href="submit.html" class="header_link header_page">Submit</a>
+        <a href="incidents.html" class="header_link">Incidents</a>
+        <a href="statistics.html" class="header_link">Statistics</a>
+        <a href="donate.html" class="donate_btn">Donate</a>
+        <div class="header_spacer"></div>
+        <a href="about.html" class="header_link">About</a>
+        <a href="connect.html" class="header_link">Connect</a>
+      </div>
+      <div class="menu_header">
+        <a href="index.html" class="header_img"
+          ><img
+            src="https://live.staticflickr.com/65535/50142685812_4b909c1871_o.png"
+        /></a>
+        <img
+          onclick="show_function()"
+          class="hamburger"
+          src="https://live.staticflickr.com/65535/50167835143_4d3b56d21c_o.png"
+        />
+      </div>
+    </div>
+    <div class="menu_dropdown" id="menu_dropdown">
+      <a href="index.html">
+        <h1>
+          Home
+        </h1>
+      </a>
+      <a href="submit.html">
+        <h1>
+          Submit
+        </h1>
+      </a>
+      <a href="incidents.html">
+        <h1>
+          Incidents
+        </h1>
+      </a>
+      <a href="statistics.html">
+        <h1>
+          Statistics
+        </h1>
+      </a>
+      <a href="about.html">
+        <h1>
+          About
+        </h1>
+      </a>
+      <a href="connect.html">
+        <h1>
+          Connect
+        </h1>
+      </a>
+      <a href="donate.html">
+        <h1>
+          Donate
+        </h1>
+      </a>
+
+      <div class="mob0"></div>
+    </div>
+
+    <div class="content_2">
+      <div class="main_submit">
+        
+        <div class="incident_form_container">
+          <div class="incident_form_header">
+            <h1>Add Your Report</h1>
+            <div class="number_container">
+              <div class="step_number" id="i_1">1</div>
+              <div class="line" id="l_1_2"></div>
+              <div class="step_number" id="i_2">2</div>
+              <div class="line" id="l_2_3"></div>
+              <div class="step_number" id="i_3">3</div>
+              <div class="line" id="l_3_4"></div>
+              <div class="step_number" id="i_4">4</div>
+              <div class="line" id="l_4_5"></div>
+              <div class="step_number" id="i_5">5</div>
+            </div>
+          </div>
+          <form id="incident_form" action="">
+            <div id="step1" class="incident_form_steps">
+              <h2>
+                Step 1: Give Your Report a Title
+                <span id="title_error"
+                  ><br />Please enter a valid title using the template or write
+                  your own</span
+                >
+              </h2>
+
+              <h3>
+                Fill Out This Template:
+              </h3>
+              <div class="inner_form">
+                <label for="t_1">I was</label>
+                <select id="t_1" name="t_1">
+                  <option value=""></option>
+                  <option value="Unfairly Treated">Unfairly Treated</option>
+                  <option value="Discriminated Against">Discriminated Against</option>
+                  <option value="Harassed">Harassed</option>
+                  <option value="Abused">Abused</option>
+                  <option value="Outed">Outed</option>
+                  <option value="Excluded">Excluded</option>
+                </select>
+                <label for="t_2">by</label>
+                <select id="t_2" name="t_2">
+                  <option value=""></option>
+                  <option value="a Policy">a Policy</option>
+                  <option value="a Coworker">a Coworker</option>
+                  <option value="a Friend">a Friend</option>
+                  <option value="a Family Member">a Family Member</option>
+                  <option value="my Employer">my Employer</option>
+                  <option value="my Manager">my Manager</option>
+                </select>
+              </div>
+              <h3>
+                Or Write Out Your Own Title (approx. 45 characters):
+              </h3>
+              <div class="inner_form">
+                <input
+                  type="text"
+                  id="custom_title"
+                  name="custom_title"
+                  class="title_input"
+                       maxlength="100"
+                /><br />
+              </div>
+            </div>
+            <div id="step2" class="incident_form_steps">
+              <h2>
+                Step 2: Describe the Incident
+                <span id="description_error"
+                  ><br />Please provide details on the incident</span
+                >
+              </h2>
+
+              <h3 class="form_para">
+                Recount What Happened 
+              </h3>
+                <p class="form_paragraph">
+                (events, circumstances, injuries, parties involved, witnesses, follow up actions, legal actions)
+                </p>
+              <div class="inner_form">
+                <textarea
+                  type="text"
+                  id="incident_description"
+                  name="incident_description"
+                  class="description_input"
+                ></textarea
+                ><br />
+              </div>
+              <h3 class="form_para">
+                Add Tags so others can find Your Report
+              </h3>
+              <p class="form_paragraph">
+                Some example tags include: Discrimination, Racism, Sexism
+              </p>
+              <div class="container_tags">
+                <input
+                  class="input-tags"
+                  type="text"
+                  data-role="tagsinput"
+                  id="tags"
+                />
+              </div>
+            </div>
+            <div id="step3" class="incident_form_steps">
+              <h2>Step 3: More Information (optional)</h2>
+              <h3>
+                When did this Happen?
+              </h3>
+              <div class="inner_form">
+                <input class="mob_input_field" type="date" id="incident_date" name="incident_date" />
+                <input
+                  type="checkbox"
+                  id="incident_ongoing"
+                  name="incident_ongoing"
+                  class="form_checkbox"
+                />
+                <label for="incident_ongoing" class="form_checkbox_label">
+                  This is ongoing or recurrent</label
+                ><br />
+              </div>
+              <h3 class="form_para">
+                Where did this Happen?
+              </h3>
+              <p class="form_paragraph">
+                You can put in a specific room (conference area, break room), a
+                building, a city...
+              </p>
+              <div class="inner_form">
+                <input
+                  type="text"
+                  id="location"
+                  name="location"
+                  class="where_input mob_input_field"
+                /><br />
+              </div>
+              <h3>
+                Employer
+              </h3>
+              <div class="inner_form">
+                <input class="mob_input_field" type="text" id="employer" name="employer" /><br />
+                <input
+                  type="checkbox"
+                  id="share_employer"
+                  name="share_employer"
+                  class="form_checkbox"
+                />
+                <label for="share_employer" class="form_checkbox_label">
+                  Share your employer publicly (optional)</label
+                ><br />
+              </div>
+            </div>
+            <div id="step4" class="incident_form_steps">
+              <h2>Step 4: About You</h2>
+              <h3>
+                Race
+              </h3>
+
+              <div class="inner_form radio">
+                <div>
+                  <input type="radio" id="r0" name="race" value="Asian" />
+                  <!-- must have same name in a group -->
+                  <label for="r0">Asian</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="r1"
+                    name="race"
+                    value="Black/African"
+                  />
+                  <label for="r1">Black/African</label><br />
+                </div>
+
+                <div>
+                  <input type="radio" id="r2" name="race" value="Latinx" />
+                  <label for="r2">Latinx</label><br />
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="r3"
+                    name="race"
+                    value="Middle Eastern"
+                  />
+                  <label for="r3">Middle Eastern</label><br />
+                </div>
+
+                <div>
+                  <input type="radio" id="r4" name="race" value="Multiracial" />
+                  <label for="r4">Multiracial</label><br />
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="r5"
+                    name="race"
+                    value="Native American"
+                  />
+                  <label for="r5">Native American</label><br />
+                </div>
+
+                <div>
+                  <input type="radio" id="r6" name="race" value="South Asian" />
+                  <label for="r6">South Asian</label><br />
+                </div>
+
+                <div>
+                  <input type="radio" id="r7" name="race" value="White" />
+                  <label for="r7">White</label><br />
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    id="r8"
+                    name="race"
+                    value="Prefer not to say"
+                  />
+                  <label for="r8">Prefer not to say</label><br />
+                </div>
+
+                <div class="other_div">
+                  <input type="radio" id="r9" name="race" value="other" />
+                  <label for="r9">Other: </label>
+                  <input type="text" class="other_input" id="race_other" />
+                </div>
+              </div>
+
+              <h3>
+                Gender
+              </h3>
+              <div class="inner_form radio">
+                <div>
+                  <input type="radio" id="g0" name="gender" value="Female" />
+                  <label for="g0">Female</label><br />
+                </div>
+                <div>
+                  <input type="radio" id="g1" name="gender" value="Male" />
+                  <label for="g1">Male</label><br />
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="g2"
+                    name="gender"
+                    value="Non-Binary"
+                  />
+                  <label for="g2">Non-binary</label><br />
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="g3"
+                    name="gender"
+                    value="Prefer not to say"
+                  />
+                  <label for="g3">Prefer not to say</label><br />
+                </div>
+                <div>
+                  <input type="radio" id="g4" name="gender" value="other" />
+                  <label for="g4">Other: </label>
+                  <input type="text" class="other_input" id="gender_other" />
+                </div>
+                <div></div>
+
+                <input
+                  type="checkbox"
+                  id="trans"
+                  name="trans"
+                  class="form_checkbox"
+                />
+                <label for="trans" class="form_checkbox_label">
+                  Check if you identify as trans</label
+                >
+              </div>
+              <h3>
+                Ability
+              </h3>
+              <div class="inner_form radio">
+                <input
+                  type="checkbox"
+                  id="disability"
+                  name="disability"
+                  class="form_checkbox"
+                />
+                <label for="disability" class="form_checkbox_label">
+                  Check if you identify as a person with a disability</label
+                ><br />
+              </div>
+            </div>
+            <div id="step5" class="incident_form_steps">
+              <h2>Step 5: Sharing Your Report</h2>
+              <h3>
+                Enter your Email for Related Updates and News (optional):
+              </h3>
+              <div class="inner_form">
+                <label for="email">Enter your email:</label>
+                <input class="mob_input_field" type="email" id="email" name="email" />
+              </div>
+              <h3>
+                Check the box below to give your consent to publish your report:
+              </h3>
+              <div class="inner_form radio">
+                <input
+                  type="checkbox"
+                  id="consent"
+                  name="consent"
+                  value="consent"
+                  class="form_checkbox"
+                />
+                <label for="consent" class="form_checkbox_label">
+                  I consent to sharing my report</label
+                ><br />
+              </div>
+              <div class="align_submit">
+                <div type="button" id="submit_btn_i" onclick="save_incident_form();">
+                  Submit Report
+                </div>
+              </div>
+            </div>
+          </form>
+          <div id="step6" class="incident_form_steps">
+            <h2 id="form_final_msg">Thank you for sharing!</h2>
+            <a href="incidents.html" class="go_to_other">Incidents</a>
+          </div>
+
+          <div class="incident_form_navigation">
+            <div id="back_btn_i" onclick="display_slide(-1);">
+              Back
+            </div>
+            <div id="next_btn_i" onclick="check_inputs(current_slide)">
+              Next
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
