@@ -44,7 +44,7 @@
         <a href="submit.html" class="header_link">Submit</a>
         <a href="incidents.html" class="header_link">Incidents</a>
         <a href="statistics.html" class="header_link header_page">Statistics</a>
-        <a href="donate.html" class="donate_btn">Donate</a>
+        <a href="https://docs.google.com/document/d/1b9vSFPQ7B52-U-U55a9G0fgh8uZFo5w8usCMxsw7kTc/edit?usp=sharing" class="donate_btn">Donate</a>
         <div class="header_spacer"></div>
         <a href="about.html" class="header_link">About</a>
         <a href="connect.html" class="header_link">Connect</a>
@@ -106,7 +106,7 @@
           Statistics
         </h1>
         <p>
-          Based on the data we gather from our community members, below is the
+          Based on the data we gathered from our community members, below is a
           list of graphs illustrating the diversity and wage gaps in society and
           specific job sectors. We analyze race, gender, age, and job sectors to
           illustrate their intersectionality. <b>Pay equity</b> is often overlooked
@@ -201,7 +201,7 @@
             backgroundColor: "#10393f",
             dataPointWidth: 12,
             axisY: {
-              title: "Salary",
+              title: "Annual Salary (CAD)",
               labelFontColor: "#ffffff",
               titleFontColor: "#ffffff",
               labelAngle: 0,
@@ -378,7 +378,7 @@
             backgroundColor: "#10393f",
             dataPointWidth: 6,
             axisY: {
-              title: "Salary",
+              title: "Annual Salary (CAD)",
               labelFontColor: "#ffffff",
               titleFontColor: "#ffffff",
               labelAngle: 0,
@@ -602,11 +602,7 @@
             }
             str2 =
               "<strong>" + e.entries[0].dataPoint.label + "</strong> <br/>";
-            str3 =
-              '<span style = "color:Green">Total: </span><strong>' +
-              total +
-              "</strong><br/>";
-            return str2.concat(str).concat(str3);
+            return str2.concat(str);
           }
 
           function toggleDataSeries2(e) {
@@ -629,7 +625,7 @@
             backgroundColor: "#10393f",
             dataPointWidth: 12,
             axisY: {
-              title: "Salary",
+              title: "Annual Salary (CAD)",
               labelFontColor: "#ffffff",
               titleFontColor: "#ffffff",
               labelAngle: 0,
@@ -745,11 +741,7 @@
             }
             str2 =
               "<strong>" + e.entries[0].dataPoint.label + "</strong> <br/>";
-            str3 =
-              '<span style = "color:Green">Total: </span><strong>' +
-              total +
-              "</strong><br/>";
-            return str2.concat(str).concat(str3);
+            return str2.concat(str);
           }
 
           function toggleDataSeries3(e) {
@@ -910,7 +902,7 @@
           can read articles, watch videos, and donate to important causes and
           movements such as Black Lives Matter.
         </p>
-        <div class="help_btn">
+        <div class="help_btn" onclick="window.location='https://docs.google.com/document/d/1b9vSFPQ7B52-U-U55a9G0fgh8uZFo5w8usCMxsw7kTc/edit?usp=sharing'">
           Help Out
         </div>
       </div>
