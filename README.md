@@ -1,8 +1,8 @@
 # equalize2020.github.io
 
 Created By:
-Camilla Djamalov
-Janvi Patel
+Camilla Djamalov,
+Janvi Patel &
 Laurel Xiang
 
 Website for the BLM Hackathon (https://blacklivesmatter.devpost.com/)
