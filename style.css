@@ -1723,6 +1723,29 @@ svg > g > g:last-child {
       height: 4vh;
       width: 100%;
     }
+    .fadeout:before {
+      height: 100%;
+      width: 30vw;
+      margin: none;
+      border-radius: 0px 5px 5px 0px;
+      position: absolute;
+      right: 0;
+      border: none;
+      border-left: none;
+    }
+    .fadeout:after {
+      height: 100%;
+      width: 30vw;
+      margin: none;
+      border-radius: 5px 0px 0px 5px;
+      position: absolute;
+      left: 0;
+      border: none;
+      border-right: none;
+    }
+    .fadeout {
+      border: 5px solid #10393f;
+    }
   }
 }
 
