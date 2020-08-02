@@ -22,27 +22,19 @@ var current_slide = 1;
 var next_slide;
 
 function display_slide(change) {
+  /* Displays the correct slide for the incident report form */
   next_slide = current_slide + change;
-  // check if change is allowed (call checker function)
   if (next_slide == 1) {
-    // Step 1: Report Title
     document.getElementById("back_btn_i").style.display = "none";
-
     document.getElementById("i_1").style.opacity = 1;
-
     document.getElementById("step1").style.display = "block";
     document.getElementById("step2").style.display = "none";
   } else if (next_slide == 2) {
-    // Button Control
     document.getElementById("back_btn_i").style.display = "block";
-
-    // Step Line Control
     document.getElementById("i_1").style.backgroundColor = "#10393f";
     document.getElementById("i_1").style.color = "#ffffff";
     document.getElementById("l_1_2").style.opacity = 1;
     document.getElementById("i_2").style.opacity = 1;
-
-    // Show Right Step
     document.getElementById("step1").style.display = "none";
     document.getElementById("step2").style.display = "block";
     document.getElementById("step3").style.display = "none";
@@ -51,64 +43,47 @@ function display_slide(change) {
     document.getElementById("i_2").style.color = "#ffffff";
     document.getElementById("l_2_3").style.opacity = 1;
     document.getElementById("i_3").style.opacity = 1;
-
     document.getElementById("step2").style.display = "none";
     document.getElementById("step3").style.display = "block";
     document.getElementById("step4").style.display = "none";
   } else if (next_slide == 4) {
     document.getElementById("next_btn_i").style.display = "block";
-    document.getElementById("submit_btn_i").style.display = "none"; // remove if submit is being visible as part of step 5 div
-    // Step Line Control
+    document.getElementById("submit_btn_i").style.display = "none";
     document.getElementById("i_3").style.backgroundColor = "#10393f";
     document.getElementById("i_3").style.color = "#ffffff";
     document.getElementById("l_3_4").style.opacity = 1;
     document.getElementById("i_4").style.opacity = 1;
-
-    // Show Right Step
     document.getElementById("step3").style.display = "none";
     document.getElementById("step4").style.display = "block";
     document.getElementById("step5").style.display = "none";
   } else if (next_slide == 5) {
-    // Button Control
     document.getElementById("next_btn_i").style.display = "none";
     document.getElementById("submit_btn_i").style.display = "block";
-
-    // Step Line Control
     document.getElementById("i_4").style.backgroundColor = "#10393f";
     document.getElementById("i_4").style.color = "#ffffff";
     document.getElementById("l_4_5").style.opacity = 1;
     document.getElementById("i_5").style.opacity = 1;
-
-    // Show Right Step
     document.getElementById("step4").style.display = "none";
     document.getElementById("step5").style.display = "block";
   } else if (next_slide == 6) {
-    // Button Control
     document.getElementById("back_btn_i").style.display = "none";
     document.getElementById("submit_btn_i").style.display = "none";
-
-    // Step Line Control
     document.getElementById("i_5").style.backgroundColor = "#10393f";
     document.getElementById("i_5").style.color = "#ffffff";
-
-    // Show Right Step
     document.getElementById("step5").style.display = "none";
     document.getElementById("step6").style.display = "block";
   }
-
   current_slide = next_slide;
 }
 
 function check_inputs(current_slide) {
   // Checks if the required inputs are filled out before going to the next page
-
   if (current_slide == 1) {
     if (
       document.getElementById("custom_title").value == "" &&
       (document.getElementById("t_1").value == "" ||
         document.getElementById("t_2").value == "")
     ) {
-      //alert("Please enter a valid title using the template or write your own"); // change to html text in red
       document.getElementById("title_error").style.display = "block";
     } else {
       display_slide(1);
@@ -116,7 +91,6 @@ function check_inputs(current_slide) {
     }
   } else if (current_slide == 2) {
     if (document.getElementById("incident_description").value == "") {
-      //alert("Please provide details on the incident");
       document.getElementById("description_error").style.display = "block";
     } else {
       display_slide(1);
@@ -127,35 +101,24 @@ function check_inputs(current_slide) {
   }
 }
 
-/// DATABASE STUFF
-//incidents
+/// DATABASE
 var IncidentReports = firebase.database().ref("IncidentReports/");
 var incident_id;
 var reports;
-// var first
 var first = true;
 
 IncidentReports.once("value").then(function(snap) {
-  console.log("my snapshot:");
-  console.log(snap.key);
-  console.log(snap.exists());
-  console.log(snap.numChildren()); // length of IncidentsReports
-  console.log(typeof snap.numChildren());
-  console.log(snap.val()); // array with JSON objects (might have to stringify)
   localStorage.setItem("reports", JSON.stringify(snap.val()));
   reports = snap.val();
   incident_id = snap.numChildren();
-  if (first){
-    show_report_grid(6, -1)
+  if (first) {
+    show_report_grid(6, -1);
     first = false;
   }
 });
 
-///
-
 function save_incident_form() {
   // Puts the incident form into an object
-
   var title_template =
     "I was " +
     document.getElementById("t_1").value +
@@ -168,7 +131,6 @@ function save_incident_form() {
   } else {
     var title = title_custom;
   }
-
   var description = document.getElementById("incident_description").value;
   var tags = document.getElementById("tags").value.split(",");
 
@@ -287,9 +249,6 @@ function save_incident_form() {
       .database()
       .ref("IncidentReports/" + incident_id)
       .set(incident_report);
-    console.log("added incident report");
-
-    //finish
 
     display_slide(1);
   } else {
@@ -306,19 +265,20 @@ function save_incident_form() {
 }
 
 function check_wage_required() {
+  // Checks if the salary field was filled out
   var salary = document.getElementById("salary").value;
   if (salary == "") {
     document.getElementById("salary_label").style.color = "	#FF0000";
     window.location = "#anchor";
     return false;
   } else {
-    document.getElementById("salary_label").style.color =
-      "#10393f";
+    document.getElementById("salary_label").style.color = "#10393f";
     return true;
   }
 }
 
 function save_wage_form() {
+  // Puts the wage form into an object
   var filled = check_wage_required();
 
   var salary = document.getElementById("salary").value;
@@ -346,8 +306,7 @@ function save_wage_form() {
     race = "ROther";
   }
 
-  if (gender == "other"  || gender == "Non-Binary") {
-    //gender = document.getElementById("wgender_other").value;
+  if (gender == "other" || gender == "Non-Binary") {
     gender = "GOther";
   }
 
@@ -366,141 +325,111 @@ function save_wage_form() {
     " " +
     today.getDate() +
     "/" +
-    today.getMonth() + 1 +
+    today.getMonth() +
+    1 +
     "/" +
     today.getFullYear();
 
   var consent = document.getElementById("wage_consent").checked;
-  
+
   if (filled) {
-    //if parameters are normal
-    //else if paramaters are not normal
-    
-    
-    if (bonus == ""){
+    if (bonus == "") {
       var tot_comp = parseFloat(salary);
     } else {
       var tot_comp = parseFloat(salary) + parseFloat(bonus);
     }
-    
-    
-    console.log("Compensation");
-    console.log(tot_comp);
-    
-    
+
     if (10000 <= tot_comp && tot_comp <= 2000000) {
-      console.log("Salary is normal")
       if (consent) {
-      var wage_report = {
-        // do keys have to be strings??
-        salary: salary,
-        bonus: bonus,
-        company: company,
-        field: field,
-        location: location,
-        years: years,
-        years_exp: years_exp,
-        age: age,
-        race: race,
-        gender: gender,
-        disability: disability,
-        additional: additional,
-        submissiontime: timestamp
-      };
-      document.getElementById("wage_submit_button").style.display = "none";
-      document.getElementById("wage_finished_text").innerHTML =
-        "Thank you! Your wage report has been submitted. <br/><a href='statistics.html' class='go_to_other'> Click here to go to Statistics.</a>";
-
-      sort_information(wage_report);
-
-      var connectwage = firebase.database().ref();
-      var wagebranch = connectwage.child("WageReports");
-      wagebranch.push(wage_report);
-      console.log("wage report added");
-    } else {
-      if (
-        window.confirm(
-          "Are you sure you do not want to share your report? Press OK if you do not want to share your report."
-        )
-      ) {
+        var wage_report = {
+          // do keys have to be strings??
+          salary: salary,
+          bonus: bonus,
+          company: company,
+          field: field,
+          location: location,
+          years: years,
+          years_exp: years_exp,
+          age: age,
+          race: race,
+          gender: gender,
+          disability: disability,
+          additional: additional,
+          submissiontime: timestamp
+        };
         document.getElementById("wage_submit_button").style.display = "none";
         document.getElementById("wage_finished_text").innerHTML =
-          "Your wage report has not been submitted.";
+          "Thank you! Your wage report has been submitted. <br/><a href='statistics.html' class='go_to_other'> Click here to go to Statistics.</a>";
+
+        sort_information(wage_report);
+
+        var connectwage = firebase.database().ref();
+        var wagebranch = connectwage.child("WageReports");
+        wagebranch.push(wage_report);
+      } else {
+        if (
+          window.confirm(
+            "Are you sure you do not want to share your report? Press OK if you do not want to share your report."
+          )
+        ) {
+          document.getElementById("wage_submit_button").style.display = "none";
+          document.getElementById("wage_finished_text").innerHTML =
+            "Your wage report has not been submitted.";
+        }
+      }
+    } else {
+      if (consent) {
+        var wage_report = {
+          // do keys have to be strings??
+          salary: salary,
+          bonus: bonus,
+          company: company,
+          field: field,
+          location: location,
+          years: years,
+          years_exp: years_exp,
+          age: age,
+          race: race,
+          gender: gender,
+          disability: disability,
+          additional: additional,
+          submissiontime: timestamp
+        };
+        document.getElementById("wage_submit_button").style.display = "none";
+        document.getElementById("wage_finished_text").innerHTML =
+          "Thank you for your submission! Your wage report contains some abnormalities. Please contact us at equalize2020@gmail.com to confirm your submission.";
+        var connectwage = firebase.database().ref();
+        var abnormalwagebranch = connectwage.child("AbnormalWageReports");
+        abnormalwagebranch.push(wage_report);
+      } else {
+        if (
+          window.confirm(
+            "Are you sure you do not want to share your report? Press OK if you do not want to share your report."
+          )
+        ) {
+          document.getElementById("wage_submit_button").style.display = "none";
+          document.getElementById("wage_finished_text").innerHTML =
+            "Your wage report has not been submitted.";
+        }
       }
     }
-    } 
-    
-    //if (10000 > (salary + bonus) && (salary + bonus) > 2000000) 
-    else {
-      console.log("salary is abnormal")
-      if (consent) {
-      var wage_report = {
-        // do keys have to be strings??
-        salary: salary,
-        bonus: bonus,
-        company: company,
-        field: field,
-        location: location,
-        years: years,
-        years_exp: years_exp,
-        age: age,
-        race: race,
-        gender: gender,
-        disability: disability,
-        additional: additional,
-        submissiontime: timestamp
-      };
-      document.getElementById("wage_submit_button").style.display = "none";
-      document.getElementById("wage_finished_text").innerHTML =
-        "Thank you for your submission! Your wage report contains some abnormalities. Please contact us at equalize2020@gmail.com to confirm your submission.";
-      console.log("contact us further")
-      //sort_information(wage_report);
-
-      var connectwage = firebase.database().ref();
-      var abnormalwagebranch = connectwage.child("AbnormalWageReports");
-      abnormalwagebranch.push(wage_report);
-      console.log("abnormal wage report added");
-    } 
-      else {
-      if (
-        window.confirm(
-          "Are you sure you do not want to share your report? Press OK if you do not want to share your report."
-        )
-      ) {
-        document.getElementById("wage_submit_button").style.display = "none";
-        document.getElementById("wage_finished_text").innerHTML =
-          "Your wage report has not been submitted.";
-      }
-      }
-  }
   }
 }
 
 //wages
 var WageReports = firebase.database().ref("Statistics/");
 WageReports.once("value").then(function(snapshot) {
-  console.log("my snapshot (STATS):");
-  console.log(snapshot.key);
-  console.log(snapshot.exists());
-  console.log(snapshot.val()); // array with JSON objects (might have to stringify)
   localStorage.setItem("stats_reports", JSON.stringify(snapshot.val()));
 });
 
 function sort_information(wr) {
-  console.log("sorting information");
-  
+  // Updates the averages for groups of people in the database
   var race_given = false;
   var gender_given = false;
   var age_given = false;
   var field_given = false;
 
   var existing_data = JSON.parse(localStorage.getItem("stats_reports"));
-  console.log("parsed data");
-  console.log(existing_data);
-  //alert();
-
-  // if field, if race, if gender, if age
-  // then, make the new names for the set and then set by id (or update)
 
   if (!(wr.race == "Prefer not to say")) {
     race_given = true;
@@ -514,38 +443,27 @@ function sort_information(wr) {
   if (wr.field != "") {
     field_given = true;
   }
-  
-  // add salary and bonus   
+
+  // add salary and bonus
   if (isNaN(parseFloat(wr.bonus))) {
-    console.log("no bonus");
     var total_comp = parseFloat(wr.salary);
-  }
-  else {
-    console.log("bonus exists");
+  } else {
     var total_comp = parseFloat(wr.salary) + parseFloat(wr.bonus);
   }
 
   function update_db_wage(temp_name) {
-    // step 1: search existing_data for if the key temp_name exists
-    // if it exists, take the array [totalAvg, #reports contributing to the avg]
-    // Multiply totalAvg by # reports, add the total_comp and divide by (#reports + 1)
-    // Then, set temp_name to a new array: [newAvg, new#Reports]
-
     if (temp_name in existing_data) {
-      console.log("Key inside!");
       var temp_attr = existing_data[temp_name];
       var old_avg = parseFloat(temp_attr[0]);
       var old_num = parseFloat(temp_attr[1]);
       var new_num = old_num + 1;
       var new_avg = (old_avg * old_num + total_comp) / new_num;
     } else {
-      console.log("not inside!");
       var new_avg = total_comp;
       var new_num = 1;
     }
 
     var new_val = [new_avg, new_num];
-    console.log(new_val); // this works! new_val contains the new array
 
     var newconnect = firebase
       .database()
@@ -555,106 +473,75 @@ function sort_information(wr) {
 
   if (race_given && gender_given) {
     var temp_name = wr.race + "_" + wr.gender;
-    console.log(temp_name);
     update_db_wage(temp_name);
   }
   if (race_given && age_given) {
-    
-    // @ laurel
-    // make a variable for the age and then sort it in one of the age ranges
-    // the thing added to temp_name instead of wr.age should be 
-    // for 16-20: range1, 20-30: range2, 30-40: range3, 40-50: range4, 50+: range5
-    // MODIFIED for 16-24: range1, 25-34: range2, 35-44: range3, 45-54 range4, 55-64: range5, 65+: range 6
-    // you might have to use parseFloat(wr.age) to get a number
-      var sage = parseFloat(wr.age);
-      if (sage > 15 && sage < 25) {
-        var temp_name = wr.race + "_" + "range1";
-        console.log(temp_name);
-        update_db_wage(temp_name);
-      }
-      if (sage > 24 && sage < 35) {
-        var temp_name = wr.race + "_" + "range2";
-        console.log(temp_name);
-        update_db_wage(temp_name);
-      }
-      if (sage > 34 && sage < 45) {
-        var temp_name = wr.race + "_" + "range3";
-        console.log(temp_name);
-        update_db_wage(temp_name);
-      }
-      if (sage > 44 && sage < 55) {
-        var temp_name = wr.race + "_" + "range4";
-        console.log(temp_name);
-        update_db_wage(temp_name);
-      }
-      if (sage > 54 && sage < 65) {
-        var temp_name = wr.race + "_" + "range5";
-        console.log(temp_name);
-        update_db_wage(temp_name);
-      }
-      if (sage > 64) {
-        var temp_name = wr.race + "_" + "range6";
-        console.log(temp_name);
-        update_db_wage(temp_name);
-      }
-    
-    //var temp_name = wr.race + "_" + wr.age;
-    //console.log(temp_name);
-    //update_db_wage(temp_name);
+    var sage = parseFloat(wr.age);
+    if (sage > 15 && sage < 25) {
+      var temp_name = wr.race + "_" + "range1";
+      update_db_wage(temp_name);
+    }
+    if (sage > 24 && sage < 35) {
+      var temp_name = wr.race + "_" + "range2";
+      update_db_wage(temp_name);
+    }
+    if (sage > 34 && sage < 45) {
+      var temp_name = wr.race + "_" + "range3";
+      update_db_wage(temp_name);
+    }
+    if (sage > 44 && sage < 55) {
+      var temp_name = wr.race + "_" + "range4";
+      update_db_wage(temp_name);
+    }
+    if (sage > 54 && sage < 65) {
+      var temp_name = wr.race + "_" + "range5";
+      update_db_wage(temp_name);
+    }
+    if (sage > 64) {
+      var temp_name = wr.race + "_" + "range6";
+      update_db_wage(temp_name);
+    }
   }
   if (race_given && field_given) {
     var temp_name = wr.race + "_" + wr.field;
-    console.log(temp_name);
     update_db_wage(temp_name);
   }
   if (gender_given && field_given) {
     var temp_name = wr.gender + "_" + wr.field;
-    console.log(temp_name);
     update_db_wage(temp_name);
   }
   if (gender_given && age_given) {
-    // @ laurel do the same thing for age here
-      var sage = parseFloat(wr.age);
-      if (sage > 15 && sage < 25) {
-        var temp_name = wr.gender + "_" + "range1";
-        console.log(temp_name);
-        update_db_wage(temp_name);
-      }
-      if (sage > 24 && sage < 35) {
-        var temp_name = wr.gender + "_" + "range2";
-        console.log(temp_name);
-        update_db_wage(temp_name);
-      }
-      if (sage > 34 && sage < 45) {
-        var temp_name = wr.gender + "_" + "range3";
-        console.log(temp_name);
-        update_db_wage(temp_name);
-      }
-      if (sage > 44 && sage < 55) {
-        var temp_name = wr.gender + "_" + "range4";
-        console.log(temp_name);
-        update_db_wage(temp_name);
-      }
-      if (sage > 54 && sage < 65) {
-        var temp_name = wr.gender + "_" + "range5";
-        console.log(temp_name);
-        update_db_wage(temp_name);
-      }
-      if (sage > 64) {
-        var temp_name = wr.gender + "_" + "range6";
-        console.log(temp_name);
-        update_db_wage(temp_name);
-      }
-    
-    //var temp_name = wr.gender + "_" + wr.age;
-    //console.log(temp_name);
-    //update_db_wage(temp_name);
+    var sage = parseFloat(wr.age);
+    if (sage > 15 && sage < 25) {
+      var temp_name = wr.gender + "_" + "range1";
+      update_db_wage(temp_name);
+    }
+    if (sage > 24 && sage < 35) {
+      var temp_name = wr.gender + "_" + "range2";
+      update_db_wage(temp_name);
+    }
+    if (sage > 34 && sage < 45) {
+      var temp_name = wr.gender + "_" + "range3";
+      update_db_wage(temp_name);
+    }
+    if (sage > 44 && sage < 55) {
+      var temp_name = wr.gender + "_" + "range4";
+      update_db_wage(temp_name);
+    }
+    if (sage > 54 && sage < 65) {
+      var temp_name = wr.gender + "_" + "range5";
+      update_db_wage(temp_name);
+    }
+    if (sage > 64) {
+      var temp_name = wr.gender + "_" + "range6";
+      update_db_wage(temp_name);
+    }
   }
 }
 
-
 /// INCIDENTS VIEWING
 function show_report_grid(grid_size, rep_array) {
+  // Show the incident reports in incidents.html
   var incidents_container = document.getElementById("in_container");
   incidents_container.innerHTML = "";
 
@@ -685,20 +572,16 @@ function show_report_grid(grid_size, rep_array) {
     incidents_item.classList.add("incidents_item");
 
     var header = document.createElement("h2");
-    
-    
 
     var header_txt = document.createTextNode(reports_shuffled[i].title);
-    
-    
-    
+
     header.appendChild(header_txt);
 
     var char_length = Math.round(
       0.00015085686700459 * (window.innerWidth * window.innerHeight) + 148.6
     );
     var shortened =
-reports_shuffled[i].description.slice(0, char_length) + "...";
+      reports_shuffled[i].description.slice(0, char_length) + "...";
 
     var paragraph = document.createElement("p");
     var paragraph_txt = document.createTextNode(shortened);
@@ -719,17 +602,13 @@ reports_shuffled[i].description.slice(0, char_length) + "...";
     var b_id = "b" + i.toString();
 
     var identification = reports_shuffled[i].incident_id;
-    console.log(identification);
     var to_replace = `<div class="read_btns" id="b_id" onclick="set_incident(${identification})">Read Report</div>`;
     document.getElementById(b_id).innerHTML = to_replace;
   }
 }
 
 function set_incident(inc) {
-  console.log("viewing");
-  console.log(inc);
-  //var o = 0;
-  //console.log(reports);
+  // Show correct incident report in incident_viewer.html
   for (var rep of reports) {
     if (rep.incident_id == inc) {
       break;
@@ -741,6 +620,7 @@ function set_incident(inc) {
 }
 
 function view_incident() {
+  // View the correct incident
   var report = JSON.parse(localStorage.getItem("chosen_report"));
   document.getElementById("viewer_title").innerHTML = report.title;
   document.getElementById("viewer_description").innerHTML = report.description;
@@ -833,13 +713,21 @@ function view_incident() {
 }
 
 function search_incidents() {
+  // Search through incidents
   var search_input = document.getElementById("incident_search").value;
   var search_input_split = search_input.split(" ");
 
   var search_results = [];
 
   for (var rep of reports) {
-    if (rep.tags.includes(search_input) && search_results.length < 9) {
+    var temp_lower_array = [];
+    for (var t of rep.tags) {
+      temp_lower_array.push(t.toLowerCase());
+    }
+    if (
+      temp_lower_array.includes(search_input.toLowerCase()) &&
+      search_results.length < 9
+    ) {
       search_results.push(rep);
     }
   }
@@ -848,7 +736,14 @@ function search_incidents() {
     // if more than one keyword was searched
     for (var splt_word of search_input_split) {
       for (var rep of reports) {
-        if (rep.tags.includes(splt_word) && !search_results.includes(rep)) {
+        var temp_lower_array = [];
+        for (var t of rep.tags) {
+          temp_lower_array.push(t.toLowerCase());
+        }
+        if (
+          temp_lower_array.includes(splt_word.toLowerCase()) &&
+          !search_results.includes(rep)
+        ) {
           search_results.push(rep);
         }
       }
