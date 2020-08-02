@@ -17,9 +17,7 @@
     <!-- scripts -->
     <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase.js"></script>
     <script src="/forms.js"></script>
-    <!--<script src="/script.js" defer></script>-->
     <script src="/page_transitions.js" defer></script>
-
   </head>
   <body onload="show_report_grid(6, -1);">
     <div class="header">
@@ -98,8 +96,8 @@
               type="text"
               id="incident_search"
               placeholder="Search through our database"
-                    onkeydown = "if (event.keyCode == 13)
-                        document.getElementById('search_button').click()"  
+              onkeydown="if (event.keyCode == 13)
+                        document.getElementById('search_button').click()"
             />
             <div id="search_button" onclick="search_incidents();">
               Search
@@ -112,7 +110,6 @@
         See More Reports
       </div>
     </div>
-
     <div data-loading>
       <span> <span></span> </span>
       <span> <span></span> </span>
