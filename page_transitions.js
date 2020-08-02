@@ -1,5 +1,3 @@
-//loading page thing
-
 var facts = [
   "In New York City, 88% of police stops in 2018 involved Black and Latinx people, while 10% involved white people. (Of those stops, 70% were completely innocent.) - New York Civil Liberties Union, 2019",
   "In one US survey, 15.8% of students reported experiencing race-based bullying or harassment. Research has found significant associations between racial bullying and negative mental and physical health in students. - Russell et al., 2012 and Rosenthal et al., 2013",
@@ -24,10 +22,8 @@ function wait(ms){
 window.addEventListener("load", function() {
   var node = document.querySelector("[data-loading]");
   node.setAttribute("data-loading", "complete");
-
   var divs = document.getElementsByClassName("fadeout");
   document.getElementById("fadeout_container").style.display="flex";
-
   [].slice.call(divs).forEach(function(div) {
     div.innerHTML = facts[Math.floor(Math.random() * facts.length)];
     
@@ -36,14 +32,9 @@ window.addEventListener("load", function() {
         "https://www.dosomething.org/us/facts/11-facts-about-racial-discrimination"
       ;
     };
-    
   });
-  
   setTimeout(() => { document.getElementById("fadeout_container").style.display="none"; }, 7250);
-  
-  
 });
-
     var showing = false;
     function show_function() {
       if (showing){
@@ -54,52 +45,3 @@ window.addEventListener("load", function() {
         showing = true;
       }
     }
-
-// //mobile hamburger animation
-// (function(){
-//     var burger = document.querySelector('.burger-container'),
-//         header_mobile = document.querySelector('.header_mobile');
-    
-//     burger.onclick = function() {
-//         header_mobile.classList.toggle('menu-opened');
-//     }
-// }());
-
-// function show_mobile_menu(){
-//   var header_mobile = document.querySelector('.header_mobile');
-//   header_mobile.classList.toggle('menu-opened');
-// }
-
-
-// //database (all pages are connected to this js file)
-// // Your web app's Firebase configuration
-// var firebaseConfig = {
-//   apiKey: "AIzaSyBLOfvjIMpmvPOFto7HTnMhZUvNvrXSHcw",
-//   authDomain: "pay-gap.firebaseapp.com",
-//   databaseURL: "https://pay-gap.firebaseio.com",
-//   projectId: "pay-gap",
-//   storageBucket: "pay-gap.appspot.com",
-//   messagingSenderId: "666718819156",
-//   appId: "1:666718819156:web:c4ce1baa3a19443fb86ec1",
-//   measurementId: "G-NK5D35T60E"
-// };
-
-// // Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
-// firebase.analytics();
-
-
-/*
-
-
-
-
-
-
-
-
-
-
-
-
-*/
