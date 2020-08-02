@@ -1,5 +1,7 @@
 # equalize2020.github.io
 
+https://equalize2020.github.io/
+
 Created By:
 Camilla Djamalov,
 Janvi Patel &
