@@ -94,7 +94,6 @@ body {
 
 /* submit.html */
 
-
 .main_submit {
   width: 100%;
   height: 100%;
@@ -164,7 +163,7 @@ body {
   position: relative;
   box-shadow: 0px 0px 20px #164c54;
   border-radius: 5px;
-  overflow:auto;
+  overflow: auto;
 }
 
 .incident_form_header {
@@ -563,7 +562,7 @@ body {
   background-color: #10393f;
   height: 100%;
   width: 20%;
-  line-height:3.1vh;
+  line-height: 3.1vh;
   color: #ffffff;
   font-size: 3vh;
   display: flex;
@@ -1086,9 +1085,7 @@ body {
   display: -webkit-box;
   -webkit-line-clamp: 2; /* number of lines to show */
   -webkit-box-orient: vertical;
-   overflow: hidden;
-  
-  
+  overflow: hidden;
 }
 .incidents_item p {
   margin-top: 1.5vh;
@@ -1147,7 +1144,9 @@ body {
 }
 
 /* statistics.html */
-svg > g > g:last-child { pointer-events: none }
+svg > g > g:last-child {
+  pointer-events: none;
+}
 .chart_cont {
   height: 70vh;
   width: 100%;
@@ -1187,8 +1186,6 @@ svg > g > g:last-child { pointer-events: none }
 .toggle_container div:hover {
   cursor: pointer;
 }
-
-/* added stuff to hide */
 
 .menu_header {
   display: none;
@@ -1666,15 +1663,11 @@ svg > g > g:last-child { pointer-events: none }
     height: auto;
     padding: 1em;
   }
-  .inner_container_simple b{
-    color:#10393f;
+  .inner_container_simple b {
+    color: #10393f;
   }
 }
 
-/* janvi */
-
-/* ###################################### */
-
-.go_to_other{
-  color:#10393f;
+.go_to_other {
+  color: #10393f;
 }
