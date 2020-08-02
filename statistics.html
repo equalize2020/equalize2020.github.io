@@ -24,16 +24,13 @@
     ></script>
     <script src="/statistics.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
   </head>
-
   <body onload="fadeOutEffect();">
     <div class="header">
       <div class="inner_header">
@@ -173,24 +170,7 @@
         </h2>
         <div id="chartContainer3" class="chart_cont"></div>
       </div>
-
-      <!--       <div class="home_txt yellow">
-        <h1>
-          The Effect of Gender and Age on Wage
-        </h1>
-        <p>
-          This graph illustrates how the wage gap evolves as people of different genders
-          get older.
-        </p>
-        <h2>
-          Gender and Age
-        </h2>
-        <div id="chartContainer3" class="chart_cont"></div>
-      </div> -->
-
       <script type="text/javascript">
-        //var stats_data = JSON.parse(localStorage.getItem("stats_data"));
-        // window.onload = function() { // change the onload
         function show_charts_after() {
           var stats_data = JSON.parse(localStorage.getItem("stats_data"));
           var chart = new CanvasJS.Chart("chartContainer", {
@@ -831,7 +811,6 @@
           <div id="stacked_container2" class="chart_cont3"></div>
         </figure>
       </div>
-
       <script>
         function show_charts_after2() {
           Highcharts.chart("stacked_container2", {
@@ -907,7 +886,6 @@
         </div>
       </div>
     </div>
-    <!-- https://codepen.io/tomncurry/pen/xJpOax -->
     <div data-loading>
       <span> <span></span> </span>
       <span> <span></span> </span>
@@ -915,6 +893,5 @@
     <div class="fadeout_container" id="fadeout_container">
       <div class="fadeout"></div>
     </div>
-    <!-- quotes from https://www.dosomething.org/us/facts/11-facts-about-racial-discrimination -->
   </body>
 </html>
