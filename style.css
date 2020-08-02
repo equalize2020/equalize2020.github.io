@@ -805,11 +805,11 @@ body {
 
 [data-loading="complete"] {
   animation: close 0s forwards;
-  animation-delay: 3.95s;
+  animation-delay: 6.95s;
 }
 [data-loading="complete"] > * {
   animation: open 1.5s forwards;
-  animation-delay: 2.95s;
+  animation-delay: 5.95s;
 }
 
 .fadeout_container {
@@ -841,7 +841,7 @@ body {
   margin-left: 15vw;
   margin-right: 15vw;
   animation: textFade 1.5s forwards;
-  animation-delay: 3.5s;
+  animation-delay: 6.5s;
   border-radius: 5px;
   font-size: 3vh;
   font-weight: bold;
@@ -859,7 +859,7 @@ body {
   border: 10px solid #0081cf;
   border-left: none;
   content: "";
-  animation: borderFade 4.5s forwards;
+  animation: borderFade 6.5s forwards;
   animation-delay: 0.1s;
 }
 .fadeout:after {
@@ -872,7 +872,7 @@ body {
   border: 10px solid #e8eb02;
   border-right: none;
   content: "";
-  animation: borderFade 4.5s forwards;
+  animation: borderFade 6.5s forwards;
   animation-delay: 0.1s;
 }
 
@@ -1670,6 +1670,9 @@ body {
   .fadeout {
     height: auto;
     padding: 1em;
+  }
+  .inner_container_simple b{
+    color:#10393f;
   }
 }
 
