@@ -7,12 +7,12 @@ Laurel Xiang
 
 Website for the BLM Hackathon (https://blacklivesmatter.devpost.com/)
 
-##Website Overview / Testing Instructions:
+## Website Overview / Testing Instructions:
   - Submit Wage Reports and Incident Reports on the Submit page
   - View Statistics pulled from all of the Wage Reports
   - Read Incident Reports in Incidents
 
-##Credits and References Used:
+## Credits and References Used:
 - Loading page: https://codepen.io/tomncurry/pen/xJpOax
 - Google Charts: https://developers.google.com/chart
 - Canvas JS: https://canvasjs.com/
