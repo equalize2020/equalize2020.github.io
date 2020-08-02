@@ -39,7 +39,7 @@ window.addEventListener("load", function() {
     
   });
   
-  setTimeout(() => { document.getElementById("fadeout_container").style.display="none"; }, 3500);
+  setTimeout(() => { document.getElementById("fadeout_container").style.display="none"; }, 7000);
   
   
 });
