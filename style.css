@@ -1576,13 +1576,16 @@ svg > g > g:last-child {
   }
 
   .wage_title {
-    width: 100%;
+    background-color: red;
+    width: auto;
+    margin-right: 2vw;
     text-align: center;
     margin-top: 1em;
   }
 
   .wage_sub {
     border-radius: 0;
+    height: auto;
   }
   .wage_sub h2 {
     width: 100%;
@@ -1662,9 +1665,64 @@ svg > g > g:last-child {
   .fadeout {
     height: auto;
     padding: 1em;
+    width: 80vw;
   }
   .inner_container_simple b {
     color: #10393f;
+  }
+
+  @supports (-webkit-text-size-adjust: none) and (not (-ms-ime-align: auto)) and
+    (not (-moz-appearance: none)) {
+    /* on phones */
+    .content,
+    .content_2,
+    .content_3 {
+      -webkit-overflow-scrolling: touch;
+    }
+    .mob {
+      margin-bottom: 8vh;
+    }
+    .mob0 {
+      margin-bottom: 10vh;
+    }
+    .mob2 {
+      margin-bottom: 10vh;
+    }
+    .mob4 {
+      margin-bottom: 2em;
+    }
+    .mob6 {
+      margin-bottom: 12vh;
+    }
+    .mobp {
+      padding-bottom: 7vh;
+    }
+    #viewer_description {
+      width: auto;
+      margin-right: 1em;
+    }
+    .tags_display {
+      width: auto;
+      margin-right: 1em;
+    }
+    .tags_display div {
+      margin-right: 1vw;
+      padding-left: 2vw;
+      padding-right: 2vw;
+      padding-top: 0.25vh;
+      padding-bottom: 0.25vh;
+      margin-bottom: 1vh;
+      border-radius: 50px;
+      margin-left: 0.7em;
+    }
+    .incident_form_navigation div {
+      width: 30%;
+      height: 40%;
+    }
+    .mob20 {
+      height: 4vh;
+      width: 100%;
+    }
   }
 }
 
