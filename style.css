@@ -100,7 +100,6 @@ body {
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
 }
 .choice_submit {
@@ -165,6 +164,7 @@ body {
   position: relative;
   box-shadow: 0px 0px 20px #164c54;
   border-radius: 5px;
+  overflow:auto;
 }
 
 .incident_form_header {
@@ -468,7 +468,6 @@ body {
   width: 100%-16vw;
   margin-left: 8vw;
   margin-right: 8vw;
-
   display: flex;
   flex-wrap: wrap;
 }
@@ -836,10 +835,6 @@ body {
   display: flex;
   align-items: center;
   text-align: center;
-  margin-top: 30vh;
-  margin-bottom: 30vh;
-  margin-left: 15vw;
-  margin-right: 15vw;
   animation: textFade 1.5s forwards;
   animation-delay: 6.5s;
   border-radius: 5px;
@@ -1003,7 +998,7 @@ body {
   background-color: #ffffff;
   color: #10393f;
   font-size: 3vh;
-  width: 10%;
+  width: auto;
   padding: 2vh;
   padding-left: 2vw;
   padding-right: 2vw;
