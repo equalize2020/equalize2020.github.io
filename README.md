@@ -22,4 +22,4 @@ Website for the BLM Hackathon (https://blacklivesmatter.devpost.com/)
 - Google Charts: https://developers.google.com/chart
 - Canvas JS: https://canvasjs.com/
 
-**Disclaimer: Database is populated with sample reports for demoing purposes
+**Disclaimer: Database is currently populated with sample reports for demoing purposes
