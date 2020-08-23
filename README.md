@@ -8,9 +8,7 @@ Camilla Djamalov,
 Janvi Patel &
 Laurel Xiang
 
-July 2020
-
-Website for the BLM Hackathon (https://blacklivesmatter.devpost.com/)
+Summer 2020
 
 ## Website Overview / Testing Instructions:
   - Submit Wage Reports and Incident Reports on the Submit page
