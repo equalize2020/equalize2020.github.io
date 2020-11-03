@@ -3,7 +3,7 @@
 
 https://equalize2020.github.io/
 
-Created By:
+Created By: 
 Camilla Djamalov,
 Janvi Patel &
 Laurel Xiang
